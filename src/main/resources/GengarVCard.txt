@@ -1,0 +1,12 @@
+BASIC
+GengarV
+210
+DARKNESS
+None
+2D / Dark Slumber / 40,3D / Pain Explosion / 190
+FIGHTING
+None
+2
+Sword & Shield—Fusion Strike
+E
+None
