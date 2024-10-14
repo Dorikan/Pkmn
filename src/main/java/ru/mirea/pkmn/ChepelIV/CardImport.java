@@ -2,6 +2,7 @@ package ru.mirea.pkmn.ChepelIV;
 
 import java.io.*;
 import java.util.ArrayList;
+import ru.mirea.pkmn.*;
 
 public class CardImport {
     public static Card importCardFromTxt(String path){

@@ -1,4 +1,4 @@
-package ru.mirea.pkmn.ChepelIV;
+package ru.mirea.pkmn;
 
 public enum PokemonStage {
     BASIC,

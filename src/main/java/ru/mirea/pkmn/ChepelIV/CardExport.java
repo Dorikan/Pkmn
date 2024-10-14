@@ -3,6 +3,7 @@ package ru.mirea.pkmn.ChepelIV;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import ru.mirea.pkmn.*;
 
 public class CardExport {
     public static void cardSerialization(Card target) {

@@ -1,10 +1,12 @@
-package ru.mirea.pkmn.ChepelIV;
+package ru.mirea.pkmn;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Card implements Serializable {
+
+    public static final long serialVersionUID = 1L;
     private PokemonStage pokemonStage;
     private String name;
     private int hp;
