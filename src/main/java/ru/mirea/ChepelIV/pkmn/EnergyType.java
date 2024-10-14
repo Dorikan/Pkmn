@@ -1,4 +1,4 @@
-package ru.mirea.ChepelIV;
+package ru.mirea.ChepelIV.pkmn;
 
 public enum EnergyType {
     FIRE,

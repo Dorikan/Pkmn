@@ -1,8 +1,8 @@
-package ru.mirea.ChepelIV;
+package ru.mirea.ChepelIV.pkmn;
 
 public class PkmnApplication {
     public static void main(String[] args) throws ClassNotFoundException {
-        Card myCard = CardImport.cardImportByte("src\\main\\resources\\crd\\Gengar Gigantamax.crd");
+        Card myCard = CardImport.cardImportByte("src\\main\\resources\\Durant.crd");
         System.out.println(myCard.toString());
         CardExport.cardSerialization(myCard);
     }

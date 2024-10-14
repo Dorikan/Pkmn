@@ -1,8 +1,7 @@
-package ru.mirea.ChepelIV;
+package ru.mirea.ChepelIV.pkmn;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CardImport {
     public static Card importCardFromTxt(String path){
@@ -51,7 +50,7 @@ public class CardImport {
 
     public static <RandomClass> Card cardImportByte(String path) throws ClassNotFoundException {
         try {
-            ObjectInputStream in = new ObjectInputStream(new FileInputStream(path));
+            CustomObjectInputStream in = new CustomObjectInputStream(new FileInputStream(path));
             return (Card) in.readObject();
         }catch (IOException e){
             throw new RuntimeException("Путь до файла не найден");
