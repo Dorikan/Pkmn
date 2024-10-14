@@ -1,8 +1,7 @@
-package ru.mirea.ChepelIV;
+package ru.mirea.pkmn.ChepelIV;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class CardImport {
     public static Card importCardFromTxt(String path){

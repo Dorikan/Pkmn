@@ -1,4 +1,4 @@
-package ru.mirea.ChepelIV;
+package ru.mirea.pkmn.ChepelIV;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
