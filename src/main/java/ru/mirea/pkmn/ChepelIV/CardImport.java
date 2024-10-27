@@ -31,7 +31,7 @@ public class CardImport {
                     case 8: result.setRetreatCost(tmp); break;
                     case 9: result.setGameSet(tmp); break;
                     case 10: result.setRegulationMark(tmp.charAt(0)); break;
-                    case 11: result.setOwner(getStudentFromLine(tmp)); break;
+                    case 11: result.setPokemonOwner(getStudentFromLine(tmp)); break;
                 }
             }
             br.close();

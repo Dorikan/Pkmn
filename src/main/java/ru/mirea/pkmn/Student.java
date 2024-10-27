@@ -1,10 +1,13 @@
 package ru.mirea.pkmn;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 public class Student implements Serializable {
 
-    public static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private String firstName, surName, familyName, group;
 
     public Student() {

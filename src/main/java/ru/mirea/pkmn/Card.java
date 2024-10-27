@@ -1,12 +1,15 @@
 package ru.mirea.pkmn;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Card implements Serializable {
 
-    public static final long serialVersionUID = 1L;
+    @Serial
+    private static final long serialVersionUID = 1L;
+
     private PokemonStage pokemonStage;
     private String name;
     private int hp;
@@ -16,7 +19,7 @@ public class Card implements Serializable {
     private String retreatCost;
     private String gameSet;
     private char regulationMark;
-    private Student owner;
+    private Student pokemonOwner;
 
     public Card(){}
 
@@ -124,12 +127,12 @@ public class Card implements Serializable {
         this.regulationMark = regulationMark;
     }
 
-    public Student getOwner() {
-        return owner;
+    public Student getPokemonOwner() {
+        return pokemonOwner;
     }
 
-    public void setOwner(Student owner) {
-        this.owner = owner;
+    public void setPokemonOwner(Student pokemonOwner) {
+        this.pokemonOwner = pokemonOwner;
     }
 
     @Override
