@@ -10,6 +10,7 @@ public class Card implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    private int number;
     private PokemonStage pokemonStage;
     private String name;
     private int hp;
@@ -25,7 +26,7 @@ public class Card implements Serializable {
 
     public Card(PokemonStage pokemonStage, String name, int hp, Card evolvesFrom, List<AttackSkill> skills,
                 EnergyType pokemonType, EnergyType weaknessType, EnergyType resistanceType,
-                String retreatCost, String gameSet, char regulationMark) {
+                String retreatCost, String gameSet, char regulationMark, int number) {
         this.pokemonStage = pokemonStage;
         this.name = name;
         this.hp = hp;
@@ -37,6 +38,7 @@ public class Card implements Serializable {
         this.retreatCost = retreatCost;
         this.gameSet = gameSet;
         this.regulationMark = regulationMark;
+        this.number = number;
     }
 
     public PokemonStage getPokemonStage() {
@@ -133,6 +135,14 @@ public class Card implements Serializable {
 
     public void setPokemonOwner(Student pokemonOwner) {
         this.pokemonOwner = pokemonOwner;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
     }
 
     @Override

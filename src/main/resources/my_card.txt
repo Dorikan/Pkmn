@@ -1,5 +1,5 @@
 VMAX
-Gengar Gigantamax
+Gengar VMAX
 320
 DARKNESS
 C:\Users\User\IdeaProjects\Pkmn\src\main\resources\GengarVCard.txt
@@ -10,3 +10,4 @@ None
 Sword & Shield—Fusion Strike
 E
 Чепель / Илья / Владимирович / БСБО-04-23
+157

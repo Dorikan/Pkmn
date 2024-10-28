@@ -1,5 +1,5 @@
 BASIC
-GengarV
+Gengar V
 210
 DARKNESS
 None
@@ -10,3 +10,4 @@ None
 Sword & Shield—Fusion Strike
 E
 None
+156

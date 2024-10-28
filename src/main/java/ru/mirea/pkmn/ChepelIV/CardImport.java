@@ -2,7 +2,14 @@ package ru.mirea.pkmn.ChepelIV;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import ru.mirea.pkmn.*;
+import ru.mirea.pkmn.web.http.PkmnHttpClient;
 
 public class CardImport {
     public static Card importCardFromTxt(String path){
@@ -11,7 +18,7 @@ public class CardImport {
 
         try{
             BufferedReader br = new BufferedReader(new FileReader(path));
-            for (int i = 0; i < 12; i++){
+            for (int i = 0; i < 13; i++){
                 String tmp = br.readLine();
                 switch (i){
                     case 0: result.setPokemonStage(PokemonStage.valueOf(tmp)); break;
@@ -32,6 +39,7 @@ public class CardImport {
                     case 9: result.setGameSet(tmp); break;
                     case 10: result.setRegulationMark(tmp.charAt(0)); break;
                     case 11: result.setPokemonOwner(getStudentFromLine(tmp)); break;
+                    case 12: result.setNumber(Integer.parseInt(tmp)); break;
                 }
             }
             br.close();
@@ -60,7 +68,7 @@ public class CardImport {
 
     private static Student getStudentFromLine(String s) throws ArrayIndexOutOfBoundsException{
         Student result = new Student();
-        if (s.equalsIgnoreCase("none")) return result;
+        if (s.equalsIgnoreCase("none")) return null;
 
         String[] tmp = s.split(" / ");
 
@@ -78,8 +86,36 @@ public class CardImport {
         for(String skill : s.split(",")){
             String[] tmp = skill.split(" / ");
             result.add(new AttackSkill(tmp[1], "", tmp[0], Integer.parseInt(tmp[2])));
+
         }
 
+        return result;
+    }
+
+    public static void updateAttackSkill(Card card, PkmnHttpClient httpClient) throws IOException {
+        if(card.getEvolvesFrom() != null){
+            updateAttackSkill(card.getEvolvesFrom(), httpClient);
+        }
+
+        List<JsonNode> tmp = httpClient.getPokemonCard(card.getName(), card.getNumber()).findValues("text");
+        for (int i = 0; i < tmp.size(); i++){
+            card.getSkills().get(i).setDescription(tmp.get(i).asText());
+        }
+    }
+
+    public static ArrayList<AttackSkill> parseAttackSkillsFromJson(String json) throws JsonProcessingException {
+        ArrayList<AttackSkill> result = new ArrayList<>();
+        ObjectMapper objectMapper = new ObjectMapper();
+        ArrayNode tmp = (ArrayNode) objectMapper.readTree(json);
+        for(int i = 0; i < tmp.size(); i++){
+            JsonNode ji = tmp.get(i);
+            AttackSkill as = new AttackSkill();
+            as.setDescription(ji.findValue("text").toString());
+            as.setCost(ji.findValue("cost").toString());
+            as.setDamage((ji.get("damage").asInt()));
+            as.setName(ji.findValue("name").toString());
+            result.add(as);
+        }
         return result;
     }
 
