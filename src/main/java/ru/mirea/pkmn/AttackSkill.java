@@ -1,8 +1,13 @@
 package ru.mirea.pkmn;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serial;
 import java.io.Serializable;
 
+@Setter
+@Getter
 public class AttackSkill  implements Serializable {
 
     @Serial
@@ -19,38 +24,6 @@ public class AttackSkill  implements Serializable {
         this.name = name;
         this.description = description;
         this.cost = cost;
-        this.damage = damage;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getCost() {
-        return cost;
-    }
-
-    public void setCost(String cost) {
-        this.cost = cost;
-    }
-
-    public int getDamage() {
-        return damage;
-    }
-
-    public void setDamage(int damage) {
         this.damage = damage;
     }
 

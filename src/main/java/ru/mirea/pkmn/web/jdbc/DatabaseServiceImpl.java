@@ -1,16 +1,17 @@
 package ru.mirea.pkmn.web.jdbc;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonNode;
 import ru.mirea.pkmn.*;
-import ru.mirea.pkmn.ChepelIV.CardImport;
+import ru.mirea.pkmn.entities.Card;
+import ru.mirea.pkmn.entities.Student;
 
-import javax.xml.crypto.Data;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 import java.util.UUID;
+
+import static ru.mirea.pkmn.utils.UtilsJSON.*;
 
 public class DatabaseServiceImpl implements DatabaseService {
 
@@ -98,7 +99,7 @@ public class DatabaseServiceImpl implements DatabaseService {
         result.setResistanceType(resist == null ? null : EnergyType.valueOf(resist));
         result.setPokemonStage(PokemonStage.valueOf(rs.getString("stage").toUpperCase()));
         result.setRetreatCost(rs.getString("retreat_cost"));
-        result.setSkills(CardImport.parseAttackSkillsFromJson(rs.getString("attack_skills")));
+        result.setSkills(parseAttackSkillsFromJson(rs.getString("attack_skills")));
     }
 
     @Override
@@ -148,7 +149,7 @@ public class DatabaseServiceImpl implements DatabaseService {
     }
 
     @Override
-    public void saveCardToDatabase(Card card) {
+    public void saveCardToDatabase(Card card){
         StringBuilder queryBase = new StringBuilder("INSERT INTO card(");
         StringBuilder query = new StringBuilder("VALUES(");
         if (card.getEvolvesFrom() != null){
@@ -190,12 +191,7 @@ public class DatabaseServiceImpl implements DatabaseService {
         query.append(card.getRetreatCost()).append("', '");
         query.append(card.getWeaknessType()).append("', '");
         query.append(card.getResistanceType()).append("', '");
-        query.append("[");
-        for (AttackSkill as : card.getSkills()){
-            query.append(as.toString().replace('\'', '`')).append(", ");
-        }
-        query.delete(query.length()-2, query.length()-1);
-        query.append("]").append("', '");
+        query.append(AttackSkillsToJson(card.getSkills())).append("', '");
         query.append(card.getPokemonType()).append("', '");
         query.append(card.getRegulationMark()).append("', ");
         query.append(card.getNumber());

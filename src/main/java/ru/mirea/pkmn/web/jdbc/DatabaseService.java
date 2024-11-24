@@ -1,7 +1,8 @@
 package ru.mirea.pkmn.web.jdbc;
 
-import ru.mirea.pkmn.Card;
-import ru.mirea.pkmn.Student;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import ru.mirea.pkmn.entities.Card;
+import ru.mirea.pkmn.entities.Student;
 
 import java.util.UUID;
 
@@ -10,7 +11,7 @@ public interface DatabaseService {
 
     Student getStudentFromDatabase(String studentName);
 
-    void saveCardToDatabase(Card card);
+    void saveCardToDatabase(Card card) throws JsonProcessingException;
 
     UUID createPokemonOwner(Student owner);
 }
