@@ -29,7 +29,7 @@ public class CardServiceImpl implements CardService {
         }
         if(card.getPokemonOwner() != null){
             if(studentRepo.studentExists(card.getPokemonOwner())){
-                card.setPokemonOwner(studentRepo.findByFullName(card.getPokemonOwner().getFirstName(), card.getPokemonOwner().getFamilyName(), card.getPokemonOwner().getSurName()));
+                card.setPokemonOwner(studentRepo.findExceptOfId(card.getPokemonOwner()));
             }
             else {
                 card.setPokemonOwner(studentRepo.save(card.getPokemonOwner()));

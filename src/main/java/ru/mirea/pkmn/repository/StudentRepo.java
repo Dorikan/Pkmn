@@ -13,5 +13,7 @@ public interface StudentRepo {
 
     Student findByFullName(String firstName, String familyName, String surName);
 
+    Student findExceptOfId(Student student);
+
     boolean studentExists(Student student);
 }

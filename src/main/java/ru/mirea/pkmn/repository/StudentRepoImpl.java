@@ -39,6 +39,22 @@ public class StudentRepoImpl implements StudentRepo{
     }
 
     @Override
+    public Student findExceptOfId(Student student) {
+        return entityManager.createQuery("""
+                            select s from Student s
+                            where s.firstName = :firstName
+                              and s.familyName = :familyName
+                              and s.surName = :surName
+                              and s.group = :group
+                        """, Student.class)
+                .setParameter("firstName", student.getFirstName())
+                .setParameter("familyName", student.getFamilyName())
+                .setParameter("surName", student.getSurName())
+                .setParameter("group", student.getGroup())
+                .getResultList().getFirst();
+    }
+
+    @Override
     public boolean studentExists(Student student) {
         return !entityManager.createQuery("""
                             select s from Student s
