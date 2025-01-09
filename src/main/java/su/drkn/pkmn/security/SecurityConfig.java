@@ -44,7 +44,7 @@ public class SecurityConfig {
                                 HttpMethod.POST,
                                 "/api/v1/card",
                                 "/api/v1/student")
-                        .hasRole("ROLE_ADMIN")
+                        .hasRole("ADMIN")
                         .requestMatchers("/auth/login").permitAll()
                         .requestMatchers("/register/**").permitAll()
                         .requestMatchers("/login").permitAll()
