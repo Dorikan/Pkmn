@@ -3,7 +3,7 @@ package su.drkn.pkmn.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import su.drkn.pkmn.dtos.CardDTO;
+import su.drkn.pkmn.models.dtos.CardDTO;
 import su.drkn.pkmn.models.card.Card;
 import su.drkn.pkmn.models.student.Student;
 import su.drkn.pkmn.services.CardService;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import static su.drkn.pkmn.dtos.CardDTO.fromModel;
+import static su.drkn.pkmn.models.dtos.CardDTO.fromModel;
 
 @RestController
 @RequestMapping("/api/v1/card")

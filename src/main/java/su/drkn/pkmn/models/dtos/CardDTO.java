@@ -1,4 +1,4 @@
-package su.drkn.pkmn.dtos;
+package su.drkn.pkmn.models.dtos;
 
 import lombok.*;
 import su.drkn.pkmn.models.card.AttackSkill;
